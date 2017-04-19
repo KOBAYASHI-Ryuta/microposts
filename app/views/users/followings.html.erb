@@ -10,21 +10,17 @@
         <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
-    
-    <div>
-      <%= render 'relationships/follow_button', user: @user %>
-    </div>
-    
+    <%= render 'relationships/follow_button', user: @user %>
   </aside>
+  
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li class="
-        <%= 'active' if current_page?(user_path(@user)) %>">
-          <%= link_to user_path(@user) do %>
-          Microposts
-          <span class="badge"><%= @count_microposts %></span>
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>">
+        <%= link_to user_path(@user) do %>
+        Microposts <span class="badge">
+        <%= @count_microposts %>
+        </span>
         <% end %>
-      </li>
       </li>
       <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>">
         <%= link_to followings_user_path(@user) do %>
@@ -42,7 +38,7 @@
       </li>
     </ul>
     
-    <%= render 'microposts/microposts', microposts: @microposts, user: @user %>
-    
+    <%= render 'users', users: @followings %>
+
   </div>
 </div>
