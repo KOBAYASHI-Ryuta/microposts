@@ -1,7 +1,13 @@
 <% if logged_in? %>
 
   <div class="row">
+    
     <aside class="col-md-4">
+      
+      <button type="button" class="btn btn-block">
+        <%= link_to 'My Favorites', favorites_user_path(current_user) %>
+      </button>
+      
       <%= form_for(@micropost) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
